@@ -1,0 +1,10 @@
+.env.test
+test.log
+last_run.txt
+.vitest-result.json
+coverage/
+.claude/.stop_count
+.claude/settings.local.json
+node_modules/
+dist/
+drafts/

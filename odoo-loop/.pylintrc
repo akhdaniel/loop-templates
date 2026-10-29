@@ -1,0 +1,11 @@
+[MASTER]
+load-plugins=pylint_odoo
+score=n
+
+[ODOOLINT]
+valid-odoo-versions=18.0
+
+[MESSAGES CONTROL]
+# aktifkan semua cek Odoo (odoolint), kecuali dua aturan khusus OCA
+disable=all
+enable=odoolint

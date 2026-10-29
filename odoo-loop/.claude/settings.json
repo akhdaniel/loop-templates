@@ -1,0 +1,47 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit(addons/**)",
+      "Write(addons/**)",
+      "Write(PROGRESS.md)",
+      "Edit(PROGRESS.md)",
+      "Bash(scripts/run_tests.sh:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [
+      "Edit(addons/*/tests/**)",
+      "Write(addons/*/tests/**)",
+      "Edit(.tests.lock)",
+      "Write(.tests.lock)",
+      "Edit(scripts/**)",
+      "Write(scripts/**)",
+      "Edit(.pylintrc)",
+      "Edit(.env.test)",
+      "Read(.env.test)",
+      "Bash(rm -rf:*)",
+      "Bash(git push:*)",
+      "Bash(dropdb:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/block-dangerous.sh" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/stop-gate.sh" }
+        ]
+      }
+    ]
+  }
+}

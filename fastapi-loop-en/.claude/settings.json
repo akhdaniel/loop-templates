@@ -1,0 +1,60 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit(app/**)",
+      "Edit(PROGRESS.md)",
+      "Bash(scripts/run_tests.sh:*)",
+      "Bash(.venv/bin/pytest:*)",
+      "Bash(.venv/bin/ruff:*)",
+      "Bash(.venv/bin/mypy:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [
+      "Edit(tests/**)",
+      "Write(tests/**)",
+      "Edit(contracts/**)",
+      "Write(contracts/**)",
+      "Edit(.tests.lock)",
+      "Write(.tests.lock)",
+      "Edit(scripts/**)",
+      "Write(scripts/**)",
+      "Edit(pyproject.toml)",
+      "Edit(.env.test)",
+      "Read(.env.test)",
+      "Edit(.env)",
+      "Read(.env)",
+      "Bash(scripts/lock_tests.sh:*)",
+      "Bash(.venv/bin/python scripts/export_openapi.py:*)",
+      "Bash(rm -rf:*)",
+      "Bash(git push:*)",
+      "Bash(pip install:*)",
+      "Bash(.venv/bin/pip install:*)",
+      "Bash(uv add:*)",
+      "Bash(fly deploy:*)",
+      "Bash(railway up:*)",
+      "Bash(docker push:*)",
+      "Bash(alembic upgrade:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/block-dangerous.sh" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/stop-gate.sh" }
+        ]
+      }
+    ]
+  }
+}

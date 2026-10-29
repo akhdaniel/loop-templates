@@ -1,0 +1,16 @@
+.env
+.env.test
+.venv/
+__pycache__/
+*.egg-info/
+*.db
+test.log
+last_run.txt
+.pytest-result.xml
+coverage.json
+.coverage
+.mypy_cache/
+.ruff_cache/
+.claude/.stop_count
+.claude/settings.local.json
+drafts/

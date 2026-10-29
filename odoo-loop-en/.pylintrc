@@ -1,0 +1,11 @@
+[MASTER]
+load-plugins=pylint_odoo
+score=n
+
+[ODOOLINT]
+valid-odoo-versions=18.0
+
+[MESSAGES CONTROL]
+# enable all Odoo checks (odoolint); run_tests.sh disables two OCA-specific rules
+disable=all
+enable=odoolint

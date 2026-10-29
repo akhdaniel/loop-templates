@@ -1,0 +1,8 @@
+.env.test
+test.log
+last_run.txt
+.claude/.stop_count
+.claude/settings.local.json
+__pycache__/
+*.pyc
+drafts/

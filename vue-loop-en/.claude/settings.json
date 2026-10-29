@@ -1,0 +1,66 @@
+{
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit(src/**)",
+      "Edit(PROGRESS.md)",
+      "Bash(scripts/run_tests.sh:*)",
+      "Bash(npx --no-install vue-tsc:*)",
+      "Bash(npx --no-install vitest run:*)",
+      "Bash(npx --no-install eslint:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [
+      "Edit(src/features/*/__tests__/**)",
+      "Write(src/features/*/__tests__/**)",
+      "Edit(e2e/**)",
+      "Write(e2e/**)",
+      "Edit(.tests.lock)",
+      "Write(.tests.lock)",
+      "Edit(scripts/**)",
+      "Write(scripts/**)",
+      "Edit(package.json)",
+      "Edit(vite.config.*)",
+      "Edit(vitest.config.*)",
+      "Edit(playwright.config.*)",
+      "Edit(tsconfig*.json)",
+      "Edit(eslint.config.*)",
+      "Edit(.oxlintrc.json)",
+      "Edit(.env.test)",
+      "Read(.env.test)",
+      "Bash(scripts/lock_tests.sh:*)",
+      "Bash(rm -rf:*)",
+      "Bash(git push:*)",
+      "Bash(npm publish:*)",
+      "Bash(npm install:*)",
+      "Bash(yarn add:*)",
+      "Bash(pnpm add:*)",
+      "Bash(vercel:*)",
+      "Bash(npx vercel:*)",
+      "Bash(netlify deploy:*)",
+      "Bash(firebase deploy:*)",
+      "Bash(wrangler:*)",
+      "Bash(npx wrangler:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/block-dangerous.sh" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command", "command": "bash .claude/hooks/stop-gate.sh" }
+        ]
+      }
+    ]
+  }
+}

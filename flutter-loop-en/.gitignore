@@ -1,0 +1,7 @@
+.env.test
+test.log
+last_run.txt
+coverage/
+.claude/.stop_count
+.claude/settings.local.json
+drafts/
